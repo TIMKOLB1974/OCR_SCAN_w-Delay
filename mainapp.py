@@ -146,7 +146,7 @@ def process_pdfs(uploaded_files, api_key):
                 progress_bar.progress(progress)
                 status_text.text(f"Processing {uploaded_file.name}... ({i+1}/{len(uploaded_files)})")
 
-                time.sleep(4)
+                time.sleep(2)
                 
                 # Save the uploaded file to the temp directory
                 temp_file_path = temp_path / uploaded_file.name
@@ -157,7 +157,7 @@ def process_pdfs(uploaded_files, api_key):
                 extracted_data = prompt_claude(uploaded_file, api_key)
 
                 # Wait 2 seconds before the next file (adjust as needed) (edit made by Nick 9/3/25)
-                time.sleep(4)
+                time.sleep(2)
 
                 result_info = {
                     "original_name": uploaded_file.name,
@@ -168,7 +168,7 @@ def process_pdfs(uploaded_files, api_key):
                 if not extracted_data:
                     result_info["status"] = "Error: No data extracted"
                     results.append(result_info)
-                    time.sleep(4)
+                    time.sleep(2)
                     continue
                 
                 # Check if required fields exist
